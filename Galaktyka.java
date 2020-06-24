@@ -33,6 +33,7 @@ public class Galaktyka {
                 Integer HorizontalDirection = 0;
                 Integer VerticalDirection = 0;
                 String row="";
+                
                 Integer SpiralLength = 3;
 
                 Integer NumberOfRows=1;
@@ -74,8 +75,9 @@ public class Galaktyka {
                         break;
                 }
 
-                String[][] Tablica;
-                Tablica = new String[NumberOfRows][NumberOfColumns];
+                char[][] Tablica;
+                Tablica = new char[NumberOfRows][NumberOfColumns];
+                //row.ensureCapacity(NumberOfColumns);
 
                 for (int i=0; i<GalacticSize-1; i++)
                 {
@@ -115,28 +117,35 @@ public class Galaktyka {
                                 break;
                         }  
                     }
-                    Tablica[VerticalPointer][HorizontalPointer] = "NCDC <3";
+                    Tablica[VerticalPointer][HorizontalPointer] = 'n';
                     VerticalPointer=VerticalPointer+VerticalDirection;
                     HorizontalPointer=HorizontalPointer+HorizontalDirection;
                 }
-
+                StringBuilder sb = new StringBuilder(NumberOfColumns);
+                sb.ensureCapacity(NumberOfColumns);
                 //***************WYSWIETLANIE TABLICY************
-//                for (int i=0; i<NumberOfRows; i++)
-//                {
-//                    row = "";
-//                    for (int j=0; j<NumberOfColumns; j++)
-//                    {
-//                        if (Tablica[i][j]==null)
-//                        {
-//                            row=row+"*";
-//                        }
-//                        else
-//                        {
-//                            row=row+" ";
-//                        }
-//                    }
-//                    System.out.println(row);
-//                }
+                for (int i=0; i<NumberOfRows; i++)
+                {
+                    sb.setLength(0);
+                    for (int j=0; j<NumberOfColumns; j++)
+                    {
+                        if (Tablica[i][j]!='n')
+                        {
+                            //row=row+'*';
+                            sb.append('*');
+                        }
+                        else
+                        {
+                            //ow=row+' ';
+                            sb.append(' ');
+                        }
+                    }
+                    System.out.println(sb);
+                    //row = sb.toString();
+                    //System.out.println(row);
+                    //row = null;
+                    
+                }
                 System.out.println(SpiralLength);
 
             }
