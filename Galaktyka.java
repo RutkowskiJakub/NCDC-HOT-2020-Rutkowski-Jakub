@@ -1,6 +1,3 @@
-package galaktyka;
-
-
 /**
  * @author Jakub Rutkowski
  * 

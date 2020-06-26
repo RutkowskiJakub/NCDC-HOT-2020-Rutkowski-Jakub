@@ -1,5 +1,3 @@
-package kosmolot;
-
 import java.lang.Math;
 
 /**
