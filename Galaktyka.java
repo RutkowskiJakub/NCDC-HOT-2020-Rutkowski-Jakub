@@ -10,7 +10,7 @@ public class Galaktyka {
      * 
      */
     public static void main(String[] args) {
-        
+
         Integer NumberOfArguments = args.length;
         boolean IsSizeValid = false;
         boolean IsDirectionValid = false;

@@ -12,18 +12,25 @@ public class Kosmolot {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Integer RocketSize = Integer.parseInt(args[0]);
-        String Armor = args[1];
         boolean RocketSizeValid = true;
         boolean RocketArmorValid = true;
         boolean NumberOfArgumentsIsValid = true;
         String row="";
-        
         int NumberOfArguments = args.length;
         if (NumberOfArguments != 2)
         {
             NumberOfArgumentsIsValid = false;
+            System.out.println("klops");
+            System.exit(0);
         }
+
+
+        Integer RocketSize = Integer.parseInt(args[0]);
+        String Armor = args[1];
+        
+
+        
+
         
         //System.out.println("RocketSize = " + RocketSize + " Armor = " + Armor);
         
