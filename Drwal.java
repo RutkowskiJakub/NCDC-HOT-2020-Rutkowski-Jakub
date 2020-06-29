@@ -26,7 +26,7 @@ public class Drwal {
         
         if (NumberOfArguments != 5)
         {
-            System.out.println("klops1");
+            System.out.println("klops");
             System.exit(0);
         }
 
@@ -39,12 +39,12 @@ public class Drwal {
         }
         catch (NumberFormatException exception)
         {
-            System.out.println("klops2");
+            System.out.println("klops");
             System.exit(0);
         }
         if (Szerokosc > 50 || Wysokosc > 50 || xStart > Szerokosc || yStart > Wysokosc)
         {
-            System.out.println("klops3");
+            System.out.println("klops");
             System.exit(0);
         }
         
@@ -53,22 +53,30 @@ public class Drwal {
         Integer NumberOfRowsInFile = 0;
         Integer NumberOfCharactersInRow = 0;
         String Row;
-        /////////////////////WPISANIE PLIKU WEJSCIOWEGO DO TABLICY///////////////
-        while ((Row = br.readLine()) != null)
-        {
-            NumberOfRowsInFile++;
-            NumberOfCharactersInRow = Row.length();
-            if (NumberOfCharactersInRow > Szerokosc || NumberOfRowsInFile > Wysokosc)
+        /////WPISANIE PLIKU WEJSCIOWEGO DO TABLICY///
+        try{
+            while ((Row = br.readLine()) != null)
             {
-                System.out.println("klops4");
-                System.exit(0);
+                NumberOfRowsInFile++;
+                NumberOfCharactersInRow = Row.length();
+                if (NumberOfCharactersInRow > Szerokosc || NumberOfRowsInFile > Wysokosc)
+                {
+                    System.out.println("klops");
+                    System.exit(0);
+                }
+                for (int i=0; i<Szerokosc; i++)
+                {
+                    if (i == Row.length()) break;
+                    Tablica[NumberOfRowsInFile-1][i] = Row.charAt(i);
+                }  
             }
-            for (int i=0; i<Szerokosc; i++)
-            {
-                if (i == Row.length()) break;
-                Tablica[NumberOfRowsInFile-1][i] = Row.charAt(i);
-            }  
         }
+        catch (Exception exception)
+        {
+            System.out.println("klops");
+            System.exit(0);
+        }
+
         /////////////////
         
         koloruj(yStart, xStart, Kolor, Szerokosc, Wysokosc, Tablica);
@@ -100,7 +108,7 @@ public class Drwal {
             }
 
         }
-        /////////////////////
+        
         
     }
     
@@ -109,19 +117,19 @@ public class Drwal {
         if (Tablica[xStart-1][yStart-1] == ' ' && Tablica[xStart-1][yStart-1] != Kolor)
         {
             Tablica[xStart-1][yStart-1] = Kolor;
-            //Lewy sasiad
+            
             if (xStart-2 >= 0) 
                 if (Tablica[xStart-2][yStart-1] == ' ' && Tablica[xStart-2][yStart-1] != Kolor) koloruj(xStart-1, yStart, Kolor, Szerokosc, Wysokosc, Tablica);
             
-            //Prawy sasiad
+            
             if (xStart < Szerokosc) 
                 if (Tablica[xStart][yStart-1] == ' ' && Tablica[xStart][yStart-1] != Kolor) koloruj(xStart+1, yStart, Kolor, Szerokosc, Wysokosc, Tablica);
             
-            //Gorny sasiad
+            
             if (yStart-2 >= 0) 
                 if (Tablica[xStart-1][yStart-2] == ' ' && Tablica[xStart-1][yStart-2] != Kolor) koloruj(xStart, yStart-1, Kolor, Szerokosc, Wysokosc, Tablica);
             
-            //Dolny sasiad
+            
             if (yStart < Wysokosc) 
                 if (Tablica[xStart-1][yStart] == ' ' && Tablica[xStart-1][yStart] != Kolor) koloruj(xStart, yStart+1, Kolor, Szerokosc, Wysokosc, Tablica);
         }
